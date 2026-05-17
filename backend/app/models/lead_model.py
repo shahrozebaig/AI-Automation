@@ -1,25 +1,15 @@
-from sqlalchemy import (
-    Column,
-    Integer,
-    String,
-    DateTime
-)
-from datetime import datetime
-from app.database import Base
-class Lead(Base):
-    __tablename__ = "leads"
-    id = Column(
-        Integer,
-        primary_key=True,
-        index=True
-    )
-    name = Column(String, nullable=False)
-    email = Column(String, nullable=False)
-    company = Column(String, nullable=False)
-    website = Column(String, nullable=False)
-    report_path = Column(String)
-    status = Column(String)
-    created_at = Column(
-        DateTime,
-        default=datetime.utcnow
-    )
+"""
+This project now uses MongoDB via `pymongo`.
+Keep this module as a placeholder for any model-related helpers.
+"""
+def to_document(lead_schema, report_path: str | None = None, status: str = "PENDING"):
+    """Convert a LeadSchema (pydantic) into a MongoDB document dict."""
+    doc = {
+        "name": lead_schema.name,
+        "email": str(lead_schema.email),
+        "company": lead_schema.company,
+        "website": lead_schema.website,
+        "report_path": report_path,
+        "status": status,
+    }
+    return doc

@@ -34,8 +34,6 @@ app/generated_reports/
 # Windows
 Thumbs.db
 
-# SQLite
-*.db
 
 # Testing
 .pytest_cache/

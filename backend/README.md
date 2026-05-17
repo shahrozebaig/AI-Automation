@@ -46,7 +46,6 @@ uv add beautifulsoup4
 uv add python-dotenv
 uv add groq
 uv add resend
-uv add sqlalchemy
 uv add pydantic
 uv add email-validator
 uv add gspread
@@ -66,7 +65,8 @@ Add:
 GROQ_API_KEY=your_groq_api_key
 RESEND_API_KEY=your_resend_api_key
 EMAIL_FROM=onboarding@resend.dev
-DATABASE_URL=sqlite:///./leads.db
+DATABASE_URL=your-mongodb-connection-string
+MONGO_DB_NAME=ai_leads
 ```
 
 ---

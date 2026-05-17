@@ -16,6 +16,8 @@ from app.services.email_service import (
 from app.services.sheet_service import (
     log_lead_to_sheet
 )
+from app.database import insert_lead
+from app.models.lead_model import to_document
 router = APIRouter()
 @router.post("/submit-lead")
 def submit_lead(lead: LeadSchema):
@@ -30,6 +32,8 @@ def submit_lead(lead: LeadSchema):
             lead.company,
             ai_report
         )
+        doc = to_document(lead, report_path=pdf_path, status="COMPLETED")
+        inserted_id = insert_lead(doc)
         log_lead_to_sheet(
             lead.name,
             lead.email,
@@ -44,7 +48,8 @@ def submit_lead(lead: LeadSchema):
         return {
             "success": True,
             "message": "Lead Processed Successfully",
-            "pdf_path": pdf_path
+            "pdf_path": pdf_path,
+            "db_id": str(inserted_id)
         }
     except Exception as e:
         print(
