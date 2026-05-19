@@ -24,28 +24,6 @@ The project is designed to simulate a real-world AI business automation pipeline
 
 ---
 
-# Backend API Endpoints
-
-| Endpoint          | Method | Purpose                              |
-| ----------------- | ------ | ------------------------------------ |
-| `/`               | GET    | Root API endpoint                    |
-| `/health`         | GET    | Backend health check                 |
-| `/submit-lead`    | POST   | Submit lead and generate AI report   |
-| `/webhook/resend` | POST   | Handle incoming email webhook events |
-
----
-
-# Environment Variables
-
-| Variable         | Description                      |
-| ---------------- | -------------------------------- |
-| `GROQ_API_KEY`   | API key for Groq AI services     |
-| `RESEND_API_KEY` | API key for Resend email service |
-| `EMAIL_FROM`     | Sender email address             |
-| `DATABASE_URL`   | Database connection string       |
-
----
-
 # Email Sending Limitation
 
 ```txt
